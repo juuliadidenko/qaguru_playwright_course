@@ -1,5 +1,5 @@
 {
-  "name": "qaguru_lesson_4_page_object",
+  "name": "qaguru_playwright_course",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@faker-js/faker": "^10.3.0",
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.5.0"
   }
