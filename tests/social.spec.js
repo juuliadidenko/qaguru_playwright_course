@@ -21,8 +21,8 @@ test('Follow an author from global feed', async ({ page }) => {
     await mainPage.open();
     await mainPage.gotoRegister();
     await registerPage.signup(user);
-    await globalFeed.globalFeedTab.click();
-    await globalFeed.authorProfileLink.first().click();
+    await globalFeed.gotoGlobalFeed();
+    await globalFeed.selectFirstAuthorFromFeed();
     await authorPage.follow();
     await expect(authorPage.unfollowButton).toBeVisible();
   });

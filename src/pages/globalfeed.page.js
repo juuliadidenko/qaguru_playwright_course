@@ -24,6 +24,10 @@ export class GlobalFeedPage {
       await this.popularTag.first().click();
     }
 
+    async selectFirstAuthorFromFeed() {
+      await this.authorProfileLink.first().click()
+    }
+
     async openFirstFeedPost() {
         await this.readMoreButton.first().click()
     }

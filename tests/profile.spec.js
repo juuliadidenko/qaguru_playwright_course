@@ -1,10 +1,9 @@
 import { faker } from '@faker-js/faker'
 import { MainPage } from '../src/pages/main.page';
+import { ProfilePage } from '../src/pages/profile.page';
 import { RegisterPage } from '../src/pages/register.page';
 import { SettingsPage } from '../src/pages/settings.page';
 import { test, expect } from '@playwright/test';
-import { YourFeedPage } from '../src/pages/yourfeed.page';
-import { ProfilePage } from '../src/pages/profile.page';
 
 
 let user = {
@@ -17,17 +16,16 @@ let user = {
 test('Edit profile bio', async ({ page }) => {
   const mainPage = new MainPage(page);
   const registerPage = new RegisterPage(page);
-  const yourFeed = new YourFeedPage(page);
   const settingsPage = new SettingsPage(page);
   const profilePage = new ProfilePage(page);
 
   await mainPage.open();
   await mainPage.gotoRegister();
   await registerPage.signup(user);
-  await yourFeed.profileName.click();
+  await profilePage.openProfileMenu();
   await settingsPage.gotoSettings();
   await settingsPage.updateBioSection(user.bio);
-  await yourFeed.profileName.click();
+  await profilePage.openProfileMenu();
   await profilePage.gotoProfile();
-  await expect(profilePage.getBioText(user.bio)).toBeVisible();
+  await expect(profilePage.profileInfoBlock).toContainText(user.bio);
 });
